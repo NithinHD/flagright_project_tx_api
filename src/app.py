@@ -1,6 +1,6 @@
 # app.py
 from flask import Flask, request, jsonify
-from model import SessionLocal, Transaction
+from models.model import SessionLocal, Transaction
 from sqlalchemy import and_
 
 app = Flask(__name__)
