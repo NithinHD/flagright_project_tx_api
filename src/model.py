@@ -6,6 +6,18 @@ import datetime
 Base = declarative_base()
 
 class Transaction(Base):
+    """
+    Represents a transaction.
+
+    Attributes:
+        transaction_id (int): The unique identifier for the transaction.
+        amount (float): The amount of the transaction.
+        description (str): The description of the transaction.
+        date_time (datetime): The date and time of the transaction.
+        user_id (int): The user ID associated with the transaction.
+        country (str): The country associated with the transaction.
+        tags (str, optional): The tags associated with the transaction.
+    """
     __tablename__ = 'transactions'
     transaction_id = Column(Integer, primary_key=True, autoincrement=True)
     amount = Column(Float, nullable=False)
