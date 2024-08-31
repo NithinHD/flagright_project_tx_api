@@ -22,7 +22,7 @@ class Transaction(Base):
     transaction_id = Column(Integer, primary_key=True, autoincrement=True)
     amount = Column(Float, nullable=False)
     description = Column(String, nullable=False)
-    date_time = Column(DateTime, default=datetime.now(datetime.UTC))
+    date_time = Column(DateTime, default=datetime.datetime.utcnow)
     user_id = Column(Integer, nullable=False)
     country = Column(String, nullable=False)
     tags = Column(String, nullable=True)
