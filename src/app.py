@@ -1,9 +1,12 @@
-# app.py
 from flask import Flask, request, jsonify
 from models.model import SessionLocal, Transaction
 from sqlalchemy import and_
 
 app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return "Welcome to the Transactions API!"
 
 @app.route('/transactions', methods=['POST'])
 def create_transaction():
@@ -45,7 +48,6 @@ def search_transactions():
 @app.route('/transactions/report', methods=['GET'])
 def generate_report():
     session = SessionLocal()
-    # Example: Summary of transactions for a given period
     date_from = request.args.get('date_from')
     date_to = request.args.get('date_to')
     transactions = session.query(Transaction).filter(and_(Transaction.date_time >= date_from, Transaction.date_time <= date_to)).all()
@@ -53,4 +55,4 @@ def generate_report():
     return jsonify({"total_amount": total_amount, "transaction_count": len(transactions)}), 200
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0',port=5001, debug=True)
