@@ -1,5 +1,5 @@
 from apscheduler.schedulers.background import BackgroundScheduler
-from models import SessionLocal, Transaction
+from models.model import SessionLocal, Transaction
 import random
 
 def generate_transaction():
